@@ -4,7 +4,7 @@
  *in ascending order, separated by a comma followed by a space.
  *Return: Always 0.
  */
-int main(void)
+int main()
 {
 int digit1, digit2, digit3;
 for (digit1 = 0; digit1 < 8; digit1++)
