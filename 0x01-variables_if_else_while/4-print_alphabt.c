@@ -1,6 +1,5 @@
 #include <stdio.h>
 /**
-*
 * main - main block
 *
 * Description: Print the alphabet on a line omitting e and q
