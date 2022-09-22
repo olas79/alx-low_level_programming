@@ -1,6 +1,4 @@
-#include "holberton.h"
-#include <stdio.h>
-
+#include "main.h"
 /**
  * print_line - prints a s bytes of a buffer
  * @c: buffer to print
