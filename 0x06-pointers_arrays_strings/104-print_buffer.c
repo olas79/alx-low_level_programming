@@ -1,59 +1,53 @@
 #include "main.h"
 /**
- * print_line - prints a s bytes of a buffer
- * @c: buffer to print
- * @s: bytes of buffer to print
- * @l: line of buffer to print
+ * infinite_add -  adds two numbers
+ * @n1: first number
+ * @n2: second number
+ * @r: result
+ * @size_r: result lenght
+ * Return: sum
  *
- * Return: void
  */
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
-void print_line(char *c, int s, int l)
 {
-	int j, k;
+	/* local variable declaration */
+	int i = 0, j = 0, k, l = 0, f, s, d = 0;
 
-	for (j = 0; j <= 9; j++)
+	while (n1[i] != '\0')
+		i++;
+	while (n2[j] != '\0')
+		j++;
+	if (i > j)
+		l = i;
+	else
+		l = j;
+	if (l + 1 > size_r)
+		return (0);
+	r[l] = '\0';
+	for (k = l - 1 ; k >= 0 ; k--)
 	{
-		if (j <= s)
-			printf("%02x", c[l * 10 + j]);
+		i--;
+		j--;
+		if (i >= 0)
+			f = n1[i] - '0';
 		else
-			printf("  ");
-		if (j % 2)
-			putchar(' ');
+			f = 0;
+		if (j >= 0)
+			s = n2[j] - '0';
+		else
+			s = 0;
+		r[k] = (f + s + d) % 10 + '0';
+		d = (f + s + d) / 10;
 	}
-	for (k = 0; k <= s; k++)
+	if (d == 1)
 	{
-		if (c[l * 10 + k] > 31 && c[l * 10 + k] < 127)
-			putchar(c[l * 10 + k]);
-		else
-			putchar('.');
+		r[l + 1] = '\0';
+		if (l + 2 > size_r)
+			return (0);
+		while (l-- >= 0)
+			r[l + 1] = r[l];
+		r[0] = d + '0';
 	}
-}
-
-/**
- * print_buffer - prints a buffer
- * @b: buffer to print
- * @size: size of buffer
- *
- * Return: void
- */
-void print_buffer(char *b, int size)
-{
-	int i;
-
-	for (i = 0; i <= (size - 1) / 10 && size; i++)
-	{
-		printf("%08x: ", i * 10);
-		if (i < size / 10)
-		{
-			print_line(b, 9, i);
-		}
-		else
-		{
-			print_line(b, size % 10 - 1, i);
-		}
-		putchar('\n');
-	}
-	if (size == 0)
-		putchar('\n');
+	return (r);
 }
